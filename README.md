@@ -452,7 +452,7 @@ compromised (see [documentation](https://airflow.readthedocs.io/en/stable/howto/
 </details>
 
 # Config File With Secure Defaults
-You can find a config file with all of these changes incorporate [right here](hardened_airflow.cfg).
+You can find a config file with all of these changes incorporated [right here](hardened_airflow.cfg).
 
 # Automated Linting of "airflow.cfg"
 TBD
