@@ -29,7 +29,10 @@ import click
 from configobj import ConfigObj
 from jsonschema.validators import validator_for
 
+from airflowscan.utils import Utils
 
+
+@click.version_option(version=Utils.get_version(), prog_name='airflowscan')
 @click.group()
 def cli():
     """
@@ -44,9 +47,6 @@ def cli():
 @click.argument('filename', type=click.Path(exists=True, dir_okay=False))
 def scan(filename):
     """Scan an Airflow configuration file ('airflow.cfg')"""
-
-    click.echo('Checking ' + filename)
-    click.echo()
 
     # Parse the provided file to a dictionary then convert to JSON
     config = ConfigObj(filename, interpolation=False, list_values=False)
@@ -72,11 +72,6 @@ def scan(filename):
     # Return error
     if errors:
         exit(1)
-
-# @cli.command('version')
-# def version():
-#     """Displays current version"""
-#     click.echo("Current version: v" + __version__)
 
 
 if __name__ == '__main__':

@@ -23,14 +23,15 @@
 # under the License.
 #
 from setuptools import find_packages, setup
-import airflowscan
+from airflowscan import cli
+from airflowscan.utils import Utils
 
 with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setup(
     name='airflowscan',
-    version=airflowscan.__version__,
+    version=Utils.get_version(),
     description='Static analysis tool to check Airflow configuration files for insecure settings',
     long_description=long_description,
     long_description_content_type="text/markdown",
@@ -55,7 +56,7 @@ setup(
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
     ],
-    python_requires='>=3.7',
+    python_requires='>=3.5',
     project_urls={
         'Bug Reports': 'https://github.com/nightwatchcybersecurity/airflowscan/issues',
         'Source': 'https://github.com/nightwatchcybersecurity/airflowscan',
