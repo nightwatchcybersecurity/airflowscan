@@ -1,0 +1,204 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "title": "The Root Schema",
+  "properties": {
+    "admin": {
+      "type": "object",
+      "properties": {
+        "hide_sensitive_variable_fields": {
+          "title": "Web UI Settings -> Hide sensitive variables in the UI",
+          "type": "boolean",
+          "const": true
+        }
+      }
+    },
+    "celery": {
+      "type": "object",
+      "properties": {
+        "flower_basic_auth": {
+          "title": "Authentication Settings -> Enable authentication for Flower (BASIC only)",
+          "type": "string",
+          "minLength": 1
+        },
+        "ssl_active": {
+          "title": "SSL Settings -> Enable SSL for Celery",
+          "type": "boolean",
+          "const": true
+        },
+        "ssl_cacert": {
+          "title": "SSL Settings -> Enable SSL for Celery -> SSL CA Certificate",
+          "type": "string",
+          "minLength": 1
+        },
+        "ssl_cert": {
+          "title": "SSL Settings -> Enable SSL for Celery -> SSL Certificate",
+          "type": "string",
+          "minLength": 1
+        },
+        "ssl_key": {
+          "title": "SSL Settings -> Enable SSL for Celery -> SSL Key",
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "core": {
+      "type": "object",
+      "properties": {
+        "default_impersonation": {
+          "title": "Disabling Dangerous Settings -> Prevent sudo for tasks that don't use impersonation by specifying the user to be used",
+          "type": "string",
+          "minLength": 1
+        },
+        "donot_pickle": {
+          "title": "Disabling Dangerous Settings -> Disable pickling (vulnerable to RCE)",
+          "type": "boolean",
+          "const": true
+        },
+        "enable_xcom_pickling": {
+          "title": "Disabling Dangerous Settings -> Disable pickling of XCom between tasks (vulnerable to RCE)",
+          "type": "boolean",
+          "const": false
+        },
+        "fernet_key": {
+          "title": "Enabling Settings That Increase Security -> Change the Fernet key",
+          "type": "string",
+          "minLength": 1
+        },
+        "load_examples": {
+          "title": "Disabling Dangerous Settings -> Disable examples that ship with Airflow",
+          "type": "boolean",
+          "const": false
+        },
+        "secure_mode": {
+          "title": "Enabling Settings That Increase Security -> Enable secure mode (turns off charts and ad-hoc queries)",
+          "type": "boolean",
+          "const": true
+        }
+      }
+    },
+    "dask": {
+      "type": "object",
+      "properties": {
+        "tls_ca": {
+          "title": "SSL Settings -> Enable SSL for DASK -> SSL CA Certificate",
+          "type": "string",
+          "minLength": 1
+        },
+        "tls_cert": {
+          "title": "SSL Settings -> Enable SSL for DASK -> SSL Certificate",
+          "type": "string",
+          "minLength": 1
+        },
+        "tls_key": {
+          "title": "SSL Settings -> Enable SSL for DASK -> SSL Key",
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "scheduler": {
+      "type": "object",
+      "properties": {
+        "authenticate": {
+          "title": "Authentication Settings -> Enable authentication for the scheduler",
+          "type": "boolean",
+          "const": true
+        }
+      }
+    },
+    "smtp": {
+      "type": "object",
+      "properties": {
+        "smtp_password": {
+          "title": "Authentication Settings -> Enable authentication for email -> Password",
+          "type": "string",
+          "minLength": 1
+        },
+        "smtp_ssl": {
+          "title": "SSL Settings -> Enable SSL for email",
+          "type": "boolean",
+          "const": true
+        },
+        "smtp_starttls": {
+          "title": "SSL Settings -> Enable SSL for email",
+          "type": "boolean",
+          "const": true
+        },
+        "smtp_user": {
+          "title": "Authentication Settings -> Enable authentication for email -> Username",
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "webserver": {
+      "type": "object",
+      "properties": {
+        "authenticate": {
+          "title": "Authentication Settings -> Turn on authentication for the web UI",
+          "type": "boolean",
+          "const": true
+        },
+        "auth_backend": {
+          "title": "Authentication Settings -> Turn on authentication for the web UI (any backend)",
+          "type": "string",
+          "minLength": 1
+        },
+        "base_url": {
+          "title": "SSL Settings -> Enable SSL for the web UI  -> Base URL",
+          "type": "string",
+          "format": "uri",
+          "minLength": 1,
+          "pattern": "https:\/\/.*:443"
+        },
+        "cookie_samesite": {
+          "title": "Web UI Settings -> Make session cookies more secure (SameSite flag)",
+          "type": "string",
+          "pattern": "(?i)SameSite"
+        },
+        "cookie_secure": {
+          "title": "Web UI Settings -> Make session cookies more secure (Secure flag)",
+          "type": "boolean",
+          "const": true
+        },
+        "expose_config": {
+          "title": "Disabling Dangerous Settings -> Don't expose the configuration file via the web UI (if not using RBAC)",
+          "type": "boolean",
+          "const": false
+        },
+        "filter_by_owner": {
+          "title": "Authorization Settings -> Only show the user their own DAGs (requires authentication)",
+          "type": "boolean",
+          "const": true
+        },
+        "rbac": {
+          "title": "Authorization Settings -> Enable web UI authorization",
+          "type": "boolean",
+          "const": true
+        },
+        "secret_key": {
+          "title": "Web UI Settings -> Change the Flask secret key to something random (you need to generate it)",
+          "type": "string",
+          "minlength": 1
+        },
+        "web_server_port": {
+          "title": "SSL Settings -> Enable SSL for the web UI -> port",
+          "type": "integer",
+          "const": 443
+        },
+        "web_server_ssl_cert": {
+          "title": "SSL Settings -> Enable SSL for the Web UI -> SSL Certificate",
+          "type": "string",
+          "minLength": 1
+        },
+        "web_server_ssl_key": {
+          "title": "SSL Settings -> Enable SSL for the Web UI -> SSL Key",
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    }
+  }
+}

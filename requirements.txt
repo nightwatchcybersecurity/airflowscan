@@ -1,0 +1,9 @@
+###### List of python libraries required for this project ######
+## To install, run the following command:
+# pip -r requirements.txt
+anymarkup>=0.7.0
+click>=7.0
+configobj>=5.0.6
+jsonschema>=3.0.1
+pytest>=5.0.0
+pytest-cov>=2.7.1
