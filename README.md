@@ -9,6 +9,10 @@ This checklist covers the following versions:
    * 1.10.x
 
 # Checklist
+This checklist assumes familiarity with Airflow and its configuration. Note that enabling some of these options may
+reduce or disable functionality needed for your particular use case. It is not a single solution for all
+possible uses of Airflow and appropriate judgement must be used when applying these options.
+
 There are two ways to set the settings for Airflow - via the ["airflow.cfg" file](https://github.com/apache/airflow/blob/master/airflow/config_templates/default_airflow.cfg) or by setting environment variables (AIRFLOW__{SECTION}\_\_{KEY}). Both options are presented below - see [docs](https://airflow.readthedocs.io/en/stable/howto/set-config.html).
 ## Authentication Settings
 - [ ] **Enable authentication for email**
@@ -275,6 +279,8 @@ There are two ways to set the settings for Airflow - via the ["airflow.cfg" file
   AIRFLOW__CORE__SECURE_MODE=True
   ```
 </details>
+
+- [ ] **Restrict access to the web UI via network controls**
 
 - [ ] **Turn on remote logging so logs are preserved if your system is
 compromised (see [documentation](https://airflow.readthedocs.io/en/stable/howto/write-logs.html) )**
