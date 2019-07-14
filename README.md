@@ -12,7 +12,7 @@ The purpose of this project is provide tools to increase security of
 [Apache Airflow](https://airflow.apache.org/). 
 installations. This projects provides the following tools:
    * Configuration file with hardened settings - see [hardened_airflow.cfg](data/hardened_airflow.cfg).
-   * Security checklist for hardening default installations - see [CHECKLIST.MD](data/CHECKLIST.MD).
+   * Security checklist for hardening default installations - see [CHECKLIST.MD](data/CHECKLIST.md).
    * Static analysis tool to check Airflow configuration files for insecure settings.
 
 ## How to use

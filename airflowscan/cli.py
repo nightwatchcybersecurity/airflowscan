@@ -49,7 +49,7 @@ def scan(filename):
     click.echo()
 
     # Parse the provided file to a dictionary then convert to JSON
-    config = ConfigObj(filename, interpolation=False)
+    config = ConfigObj(filename, interpolation=False, list_values=False)
     dict_data = config.dict()
     json_data = json.dumps(dict_data)
     data_to_check = anymarkup.parse(json_data)
@@ -63,7 +63,10 @@ def scan(filename):
     errors = validator(schema=schema_data).iter_errors(data_to_check)
     for error in errors:
         click.echo(error.schema['title'])
-        click.echo('Section [' + error.path[0] + '], setting "' + error.path[1] + '": ' + error.message)
+        if len(error.path) == 1:
+            click.echo('Section [' + error.path[0] + ']: ' + error.message)
+        else:
+            click.echo('Section [' + error.path[0] + '], setting "' + error.path[1] + '": ' + error.message)
         click.echo()
 
     # Return error

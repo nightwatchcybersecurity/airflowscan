@@ -5,6 +5,10 @@
   "properties": {
     "admin": {
       "type": "object",
+      "title": "Administrative Settings",
+      "required": [
+        "hide_sensitive_variable_fields"
+      ],
       "properties": {
         "hide_sensitive_variable_fields": {
           "title": "Web UI Settings -> Hide sensitive variables in the UI",
@@ -13,8 +17,31 @@
         }
       }
     },
+    "api": {
+      "type": "object",
+      "title": "API Settings",
+      "required": [
+        "auth_backend"
+      ],
+      "properties": {
+        "auth_backend": {
+          "title": "Authentication Settings for the API -> Enable authentication",
+          "type": "string",
+          "minlength": 1,
+          "not": {"enum":["airflow.api.auth.backend.default"]}
+        }
+      }
+    },
     "celery": {
       "type": "object",
+      "title": "Celery Settings",
+      "required": [
+        "flower_basic_auth",
+        "ssl_active",
+        "ssl_cacert",
+        "ssl_cert",
+        "ssl_key"
+      ],
       "properties": {
         "flower_basic_auth": {
           "title": "Authentication Settings -> Enable authentication for Flower (BASIC only)",
@@ -22,7 +49,7 @@
           "minLength": 1
         },
         "ssl_active": {
-          "title": "SSL Settings -> Enable SSL for Celery",
+          "title": "SSL Settings -> Enable SSL for Celery -> Flag",
           "type": "boolean",
           "const": true
         },
@@ -45,6 +72,15 @@
     },
     "core": {
       "type": "object",
+      "title": "Core Settings",
+      "required": [
+        "default_impersonation",
+        "donot_pickle",
+        "enable_xcom_pickling",
+        "fernet_key",
+        "load_examples",
+        "secure_mode"
+      ],
       "properties": {
         "default_impersonation": {
           "title": "Disabling Dangerous Settings -> Prevent sudo for tasks that don't use impersonation by specifying the user to be used",
@@ -62,9 +98,9 @@
           "const": false
         },
         "fernet_key": {
-          "title": "Enabling Settings That Increase Security -> Change the Fernet key",
+          "title": "Enabling Settings That Increase Security -> Change the Fernet key to something random",
           "type": "string",
-          "minLength": 1
+          "minLength": 2
         },
         "load_examples": {
           "title": "Disabling Dangerous Settings -> Disable examples that ship with Airflow",
@@ -80,6 +116,12 @@
     },
     "dask": {
       "type": "object",
+      "title": "DASK Settings",
+      "required": [
+        "tls_ca",
+        "tls_cert",
+        "tls_key"
+      ],
       "properties": {
         "tls_ca": {
           "title": "SSL Settings -> Enable SSL for DASK -> SSL CA Certificate",
@@ -98,8 +140,28 @@
         }
       }
     },
+    "ldap": {
+      "type": "object",
+      "title": "LDAP Settings",
+      "required": [
+        "uri"
+      ],
+      "properties": {
+        "uri": {
+          "title": "SSL Settings -> Enable SSL for LDAP - ldaps and port 636 (if using LDAP backends)",
+          "type": "string",
+          "format": "uri",
+          "minLength": 1,
+          "pattern": "ldaps:\/\/.*:636"
+        }
+      }
+    },
     "scheduler": {
       "type": "object",
+      "title": "Scheduler Settings",
+      "required": [
+        "authenticate"
+      ],
       "properties": {
         "authenticate": {
           "title": "Authentication Settings -> Enable authentication for the scheduler",
@@ -110,6 +172,13 @@
     },
     "smtp": {
       "type": "object",
+      "title": "Email/SMTP Settings",
+      "required": [
+        "smtp_password",
+        "smtp_ssl",
+        "smtp_starttls",
+        "smtp_user"
+      ],
       "properties": {
         "smtp_password": {
           "title": "Authentication Settings -> Enable authentication for email -> Password",
@@ -135,6 +204,21 @@
     },
     "webserver": {
       "type": "object",
+      "title": "Web UI Settings",
+      "required": [
+        "authenticate",
+        "auth_backend",
+        "base_url",
+        "cookie_samesite",
+        "cookie_secure",
+        "expose_config",
+        "filter_by_owner",
+        "rbac",
+        "secret_key",
+        "web_server_port",
+        "web_server_ssl_cert",
+        "web_server_ssl_key"
+      ],
       "properties": {
         "authenticate": {
           "title": "Authentication Settings -> Turn on authentication for the web UI",
@@ -144,7 +228,8 @@
         "auth_backend": {
           "title": "Authentication Settings -> Turn on authentication for the web UI (any backend)",
           "type": "string",
-          "minLength": 1
+          "minlength": 1,
+          "not": {"enum":["airflow.api.auth.backend.default"]}
         },
         "base_url": {
           "title": "SSL Settings -> Enable SSL for the web UI  -> Base URL",
@@ -154,12 +239,12 @@
           "pattern": "https:\/\/.*:443"
         },
         "cookie_samesite": {
-          "title": "Web UI Settings -> Make session cookies more secure (SameSite flag)",
+          "title": "Web UI Settings -> Make session cookies more secure -> SameSite flag",
           "type": "string",
-          "pattern": "(?i)SameSite"
+          "pattern": "(?i)Strict"
         },
         "cookie_secure": {
-          "title": "Web UI Settings -> Make session cookies more secure (Secure flag)",
+          "title": "Web UI Settings -> Make session cookies more secure -> Secure flag",
           "type": "boolean",
           "const": true
         },
