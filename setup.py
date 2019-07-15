@@ -23,15 +23,14 @@
 # under the License.
 #
 from setuptools import find_packages, setup
-from airflowscan import cli
-from airflowscan.utils import Utils
+from airflowscan import __version__ as version
 
 with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setup(
     name='airflowscan',
-    version=Utils.get_version(),
+    version=version,
     description='Static analysis tool to check Airflow configuration files for insecure settings',
     long_description=long_description,
     long_description_content_type="text/markdown",
@@ -39,7 +38,7 @@ setup(
     author='Nightwatch Cybersecurity',
     author_email='research@nightwatchcybersecurity.com',
     license='GNU',
-    # packages=find_packages(exclude=["scripts.*", "scripts", "tests.*", "tests"]),
+    packages=find_packages(exclude=["tests.*", "tests"]),
     include_package_data=True,
     install_requires=open('requirements.txt').read().splitlines(),
     entry_points={

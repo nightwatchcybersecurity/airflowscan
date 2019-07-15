@@ -22,17 +22,14 @@
 # specific language governing permissions and limitations
 # under the License.
 #
-import json, sys
+import sys
 
-import anymarkup
 import click
-from configobj import ConfigObj
-from jsonschema.validators import validator_for
 
-from airflowscan.utils import Utils
+from airflowscan import Utils, __version__ as version
 
 
-@click.version_option(version=Utils.get_version(), prog_name='airflowscan')
+@click.version_option(version=version, prog_name='airflowscan')
 @click.group()
 def cli():
     """
@@ -48,29 +45,20 @@ def cli():
 def scan(filename):
     """Scan an Airflow configuration file ('airflow.cfg')"""
 
-    # Parse the provided file to a dictionary then convert to JSON
-    config = ConfigObj(filename, interpolation=False, list_values=False)
-    dict_data = config.dict()
-    json_data = json.dumps(dict_data)
-    data_to_check = anymarkup.parse(json_data)
+    # Get validation errors
+    errors = Utils.validate(filename)
 
-    # Load schema file
-    schema_file = open('data/airflow_cfg.schema', 'r')
-    schema_data = json.load(schema_file)
-
-    # Validate using JsonSchema
-    validator = validator_for(schema_data)
-    errors = validator(schema=schema_data).iter_errors(data_to_check)
+    # Display results to the user
     for error in errors:
-        click.echo(error.schema['title'])
-        if len(error.path) == 1:
-            click.echo('Section [' + error.path[0] + ']: ' + error.message)
+        click.echo(error.title)
+        if error.setting:
+            click.echo('Section [' + error.section + '], setting "' + error.setting + '": ' + error.message + "\n")
         else:
-            click.echo('Section [' + error.path[0] + '], setting "' + error.path[1] + '": ' + error.message)
-        click.echo()
+            click.echo('Section [' + error.section + ']: ' + error.message + "\n")
 
     # Return error
-    if errors:
+    if len(errors) > 0:
+        click.echo("Total validation errors found: " + str(len(errors)))
         exit(1)
 
 
