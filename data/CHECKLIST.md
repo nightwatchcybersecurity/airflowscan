@@ -1,4 +1,4 @@
-# airflow-security-checklist
+# Airflow Security Checklist
 
 ## About
 Checklist of security controls to secure your [Apache Airflow](https://airflow.apache.org/) installation since ["by default all gates are opened"](https://airflow.apache.org/security.html).
@@ -478,6 +478,6 @@ compromised (see [documentation](https://airflow.readthedocs.io/en/stable/howto/
 
 ## Reporting bugs and feature requests
 Please use the GitHub issue tracker to report issues or suggest features:
-https://github.com/nightwatchcybersecurity/airflow-security-checklist
+https://github.com/nightwatchcybersecurity/airflowscan
 
 You can also send emai to **research /at/ nightwatchcybersecurity [dot] com**
