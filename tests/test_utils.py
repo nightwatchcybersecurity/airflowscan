@@ -66,21 +66,9 @@ class TestUtils(object):
         assert type(data['celery']['flower_basic_auth']) == str
         assert len(data['celery']['flower_basic_auth']) > 0
 
-    def test_validate_default_file_setting_error(self):
+    def test_validate_default_file(self):
         data = Utils.validate(DEFAULT_FILE)
         assert len(data) == 30
-        assert data[2].title == 'SSL Settings -> Enable SSL for Celery -> Flag'
-        assert data[2].section == 'celery'
-        assert data[2].setting == 'ssl_active'
-        assert data[2].message == 'True was expected'
-
-    def test_validate_default_file_section_error(self):
-        data = Utils.validate('data/default_airflow.cfg')
-        assert len(data) == 30
-        assert data[18].title == 'Email/SMTP Settings'
-        assert data[18].section == 'smtp'
-        assert data[18].setting is None
-        assert data[18].message == "'smtp_user' is a required property"
 
     def test_validate_hardened_file(self):
         data = Utils.validate(HARDENED_FILE)
