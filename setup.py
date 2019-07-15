@@ -38,7 +38,7 @@ setup(
     author='Nightwatch Cybersecurity',
     author_email='research@nightwatchcybersecurity.com',
     license='GNU',
-    packages=find_packages(exclude=["tests.*", "tests"]),
+    packages=find_packages(exclude=["scripts.*", "scripts", "tests.*", "tests"]),
     include_package_data=True,
     install_requires=open('requirements.txt').read().splitlines(),
     entry_points={
