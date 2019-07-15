@@ -3,6 +3,7 @@
 [![Build Status](https://travis-ci.org/nightwatchcybersecurity/airflowscan.svg?branch=master)](https://travis-ci.org/nightwatchcybersecurity/airflowscan)
 [![codecov](https://codecov.io/gh/nightwatchcybersecurity/airflowscan/branch/master/graph/badge.svg)](https://codecov.io/gh/nightwatchcybersecurity/airflowscan)
 ![GitHub](https://img.shields.io/github/license/nightwatchcybersecurity/airflowscan.svg)
+
 Checklist and tools for increasing security of Apache Airflow.
  
 ## DISCLAIMER
