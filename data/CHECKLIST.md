@@ -318,7 +318,22 @@ compromised (see [documentation](https://airflow.readthedocs.io/en/stable/howto/
   ```
 </details>
 
-- [ ] **Enable SSL for the Celery database connection (PostgreSQL, other engines need their own SSL flag set)**
+- [ ] **Enable SSL for the Celery broker connection (PostgreSQL, other engines need their own SSL flag set)**
+<details><summary>Using config file</summary>
+
+  ```ini
+  [celery]
+  broker_url = postgresql://<usr>:<pass>@<host>:<port>/<db>?sslmode=verify-full
+  ```
+</details>
+<details><summary>Using environment variables</summary>
+
+  ```sh
+  AIRFLOW__CELERY__BROKER_URL=postgresql://<usr>:<pass>@<host>:<port>/<db>?sslmode=verify-full
+  ```
+</details>
+
+- [ ] **Enable SSL for the Celery result backend (PostgreSQL, other engines need their own SSL flag set)**
 <details><summary>Using config file</summary>
 
   ```ini
