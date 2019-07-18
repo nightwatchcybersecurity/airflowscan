@@ -98,9 +98,10 @@
           "const": false
         },
         "fernet_key": {
-          "title": "Enabling Settings That Increase Security -> Change the Fernet key to something random",
+          "title": "Enabling Settings That Increase Security -> Leave the Fernet key set to {FERNET_KEY} or generate your own",
           "type": "string",
-          "minLength": 2
+          "minLength": 2,
+          "pattern": "{FERNET_KEY}|.*"
         },
         "load_examples": {
           "title": "Disabling Dangerous Settings -> Disable examples that ship with Airflow",
@@ -264,9 +265,10 @@
           "const": true
         },
         "secret_key": {
-          "title": "Web UI Settings -> Change the Flask secret key to something random (you need to generate it)",
+          "title": "Web UI Settings -> Leave the Flask secret key set to {SECRET_KEY} or generate your own",
           "type": "string",
-          "minlength": 1
+          "minlength": 2,
+          "pattern": "{SECRET_KEY}|.*"
         },
         "web_server_port": {
           "title": "SSL Settings -> Enable SSL for the web UI -> port",

@@ -261,18 +261,19 @@ There are two ways to set the settings for Airflow - via the ["airflow.cfg" file
 </details>
 
 ## Enabling Settings That Increase Security
-- [ ] **Change the Fernet key (you need to generate it then enable encryption via [these instructions](https://airflow.readthedocs.io/en/stable/howto/secure-connections.html))**
+[ ] **Leave the Fernet key set to
+ {FERNET_KEY} - Airflow will automatically generate a random key (or set to your own random key)****
 <details><summary>Using config file</summary>
 
   ```ini
   [core]
-  fernet_key = <key>
+  fernet_key = {FERNET_KEY}
   ```
 </details>
 <details><summary>Using environment variables</summary>
 
   ```sh
-  AIRFLOW__CORE__FERNET_KEY=<key>
+  AIRFLOW__CORE__FERNET_KEY={FERNET_KEY}
   ```
 </details>
 
@@ -436,18 +437,19 @@ compromised (see [documentation](https://airflow.readthedocs.io/en/stable/howto/
 </details>
 
 ## Web UI Settings
-- [ ] **Change the [Flask secret key](https://flask.palletsprojects.com/en/1.0.x/config/#SECRET_KEY) to something random (you need to generate it)**
+- [ ] **Leave the [Flask secret key](https://flask.palletsprojects.com/en/1.0.x/config/#SECRET_KEY) set to
+ {SECRET_KEY} - Airflow will automatically generate a random key (or set to your own random key)**
 <details><summary>Using config file</summary>
 
   ```ini
   [webserver]
-  secret_key = <key>
+  secret_key = {SECRET_KEY}
   ```
 </details>
 <details><summary>Using environment variables</summary>
 
   ```sh
-  AIRFLOW__WEBSERVER__SECRET_KEY=<key>
+  AIRFLOW__WEBSERVER__SECRET_KEY={SECRET_KEY}
   ```
 </details>
 
