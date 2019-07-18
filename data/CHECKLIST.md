@@ -261,19 +261,18 @@ There are two ways to set the settings for Airflow - via the ["airflow.cfg" file
 </details>
 
 ## Enabling Settings That Increase Security
-[ ] **Leave the Fernet key set to
- {FERNET_KEY} - Airflow will automatically generate a random key (or set to your own random key)****
+- [ ] **Change the Fernet key (you need to generate it then enable encryption via [these instructions](https://airflow.readthedocs.io/en/stable/howto/secure-connections.html))**
 <details><summary>Using config file</summary>
 
   ```ini
   [core]
-  fernet_key = {FERNET_KEY}
+  fernet_key = <key>
   ```
 </details>
 <details><summary>Using environment variables</summary>
 
   ```sh
-  AIRFLOW__CORE__FERNET_KEY={FERNET_KEY}
+  AIRFLOW__CORE__FERNET_KEY=<key>
   ```
 </details>
 

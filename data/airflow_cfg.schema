@@ -98,10 +98,9 @@
           "const": false
         },
         "fernet_key": {
-          "title": "Enabling Settings That Increase Security -> Leave the Fernet key set to {FERNET_KEY} or generate your own",
+          "title": "Enabling Settings That Increase Security -> Change the Fernet key to something random",
           "type": "string",
-          "minLength": 2,
-          "pattern": "{FERNET_KEY}|.*"
+          "minLength": 2
         },
         "load_examples": {
           "title": "Disabling Dangerous Settings -> Disable examples that ship with Airflow",
