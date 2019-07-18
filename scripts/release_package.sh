@@ -56,4 +56,4 @@ twine upload --repository-url $PYPI_URL dist/*
 # Clean
 echo
 echo Cleaning...
-#python3 setup.py clean --dist --eggs
+python3 setup.py clean --dist --eggs
