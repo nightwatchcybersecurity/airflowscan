@@ -28,7 +28,7 @@ import anymarkup
 from configobj import ConfigObj
 from jsonschema.validators import validator_for
 
-__version__ = '0.1.0'
+__version__ = '0.1.1'
 DEFAULT_FILE = 'data/default_airflow.cfg'
 HARDENED_FILE = 'data/hardened_airflow.cfg'
 SCHEMA_FILE = 'data/airflow_cfg.schema'
