@@ -25,13 +25,13 @@
 import json
 
 import anymarkup
-from configobj import ConfigObj
 from jsonschema.validators import validator_for
 
 __version__ = '0.1.2'
 DEFAULT_FILE = 'data/default_airflow.cfg'
 HARDENED_FILE = 'data/hardened_airflow.cfg'
 SCHEMA_FILE = 'data/airflow_cfg.schema'
+
 
 class ValidationError(object):
     """
@@ -68,10 +68,7 @@ class Utils(object):
         :param filename: filename to convert
         :return: JSON data as a dictionary
         """
-        config = ConfigObj(filename, interpolation=False, list_values=False)
-        dict_data = config.dict()
-        json_data = json.dumps(dict_data)
-        json_dict = anymarkup.parse(json_data)
+        json_dict = anymarkup.parse_file(filename, interpolate=False)
         return json_dict
 
     @staticmethod

@@ -45,7 +45,7 @@
       "properties": {
         "flower_basic_auth": {
           "title": "Authentication Settings -> Enable authentication for Flower (BASIC only)",
-          "type": "string",
+          "type": "array",
           "minLength": 1
         },
         "ssl_active": {

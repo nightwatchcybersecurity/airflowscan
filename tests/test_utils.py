@@ -23,6 +23,8 @@
 # under the License.
 #
 from airflowscan import Utils, HARDENED_FILE, DEFAULT_FILE
+from anymarkup import AnyMarkupError
+import pytest
 
 
 class TestUtils(object):
@@ -41,9 +43,8 @@ class TestUtils(object):
         assert len(properties['webserver']) > 0
 
     def test_convert_config_file_to_json_dict_file_doesnt_exist(self):
-        data = Utils._convert_config_file_to_json_dict('foobar')
-        assert type(data) == dict
-        assert len(data) == 0
+        with pytest.raises(AnyMarkupError):
+            Utils._convert_config_file_to_json_dict('foobar')
 
     def test_convert_config_file_to_json_dict(self):
         data = Utils._convert_config_file_to_json_dict(HARDENED_FILE)
@@ -56,19 +57,20 @@ class TestUtils(object):
         data = Utils._convert_config_file_to_json_dict(HARDENED_FILE)
         assert type(data) == dict
         assert len(data) > 0
+        assert len(data) > 0
         assert type(data['core']['remote_logging']) == bool
-        assert data['core']['remote_logging'] == False
+        assert data['core']['remote_logging'] is False
 
     def test_convert_config_file_to_json_dict_arrays_as_str(self):
         data = Utils._convert_config_file_to_json_dict(HARDENED_FILE)
         assert type(data) == dict
         assert len(data) > 0
-        assert type(data['celery']['flower_basic_auth']) == str
-        assert len(data['celery']['flower_basic_auth']) > 0
+        assert type(data['celery']['flower_basic_auth']) == list
+        assert len(data['celery']['flower_basic_auth']) == 2
 
     def test_validate_default_file(self):
         data = Utils.validate(DEFAULT_FILE)
-        assert len(data) == 30
+        assert len(data) == 31
 
     def test_validate_hardened_file(self):
         data = Utils.validate(HARDENED_FILE)
