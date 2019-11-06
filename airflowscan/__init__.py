@@ -26,11 +26,12 @@ import json
 
 import anymarkup
 from jsonschema.validators import validator_for
+import pkg_resources
 
-__version__ = '0.1.2'
-DEFAULT_FILE = 'data/default_airflow.cfg'
-HARDENED_FILE = 'data/hardened_airflow.cfg'
-SCHEMA_FILE = 'data/airflow_cfg.schema'
+__version__ = '0.1.3'
+DEFAULT_FILE = pkg_resources.resource_filename('airflowscan', 'data/default_airflow.cfg')
+HARDENED_FILE = pkg_resources.resource_filename('airflowscan', 'data/hardened_airflow.cfg')
+SCHEMA_FILE = pkg_resources.resource_filename('airflowscan', 'data/airflow_cfg.schema')
 
 
 class ValidationError(object):
