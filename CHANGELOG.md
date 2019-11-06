@@ -1,7 +1,7 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
-## [0.1.3] - 2019-11-05
+## [0.1.3.x] - 2019-11-05
 ### Added
 - Fixed bug with loading data files in Python 3.7
 

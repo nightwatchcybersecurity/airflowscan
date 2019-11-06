@@ -28,7 +28,7 @@ import anymarkup
 from jsonschema.validators import validator_for
 import pkg_resources
 
-__version__ = '0.1.3'
+__version__ = '0.1.3.1'
 DEFAULT_FILE = pkg_resources.resource_filename('airflowscan', 'data/default_airflow.cfg')
 HARDENED_FILE = pkg_resources.resource_filename('airflowscan', 'data/hardened_airflow.cfg')
 SCHEMA_FILE = pkg_resources.resource_filename('airflowscan', 'data/airflow_cfg.schema')
