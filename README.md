@@ -14,10 +14,10 @@ and is not endorsed by them.
 The purpose of this project is provide tools to increase security of
 [Apache Airflow](https://airflow.apache.org/). 
 installations. This projects provides the following tools:
-- Configuration file with hardened settings - see [hardened_airflow.cfg](airflowscan/airflowscan/data/hardened_airflow.cfg).
-- Security checklist for hardening default installations - see [CHECKLIST.MD](airflowscan/airflowscan/data/CHECKLIST.md).
+- Configuration file with hardened settings - see [hardened_airflow.cfg](airflowscan/data/hardened_airflow.cfg).
+- Security checklist for hardening default installations - see [CHECKLIST.MD](airflowscan/data/CHECKLIST.md).
 - Static analysis tool to check Airflow configuration files for insecure settings.
-- JSON schema document used for validation by the static analysis tool - see [airflow_cfg.schema](airflowscan/airflowscan/data/airflow_cfg.schema)  
+- JSON schema document used for validation by the static analysis tool - see [airflow_cfg.schema](airflowscan/data/airflow_cfg.schema)  
 
 # Information for the Static Analysis Tool (airflowscan)
 The static analysis tool can check an Airflow configuration file for settings related to security. The tool
