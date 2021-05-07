@@ -1,8 +1,9 @@
 # airflowscan
-[![PyPI version](https://badge.fury.io/py/airflowscan.svg)](https://badge.fury.io/py/airflowscan)
+![PyPI](https://img.shields.io/pypi/v/airflowscan)
 [![Build Status](https://travis-ci.org/nightwatchcybersecurity/airflowscan.svg?branch=master)](https://travis-ci.org/nightwatchcybersecurity/airflowscan)
 [![codecov](https://codecov.io/gh/nightwatchcybersecurity/airflowscan/branch/master/graph/badge.svg)](https://codecov.io/gh/nightwatchcybersecurity/airflowscan)
 ![GitHub](https://img.shields.io/github/license/nightwatchcybersecurity/airflowscan.svg)
+![PyPI - Downloads](https://img.shields.io/pypi/dm/airflowscan)
 
 Checklist and tools for increasing security of Apache Airflow.
  
